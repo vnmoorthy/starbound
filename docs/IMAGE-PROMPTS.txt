@@ -1,0 +1,25 @@
+Use case: stylized-concept
+Asset type: photorealistic engineering concept image for the StarBound Dyson swarm simulator
+Primary request: Ground-level ultra-realistic cinematic engineering concept of an autonomous factory on airless cratered Mercury.
+Scene/backdrop: Rugged cratered Mercury terrain beneath a pure black sky, with harsh low solar light and long crisp shadows. A long electromagnetic mass-driver rail runs across distant terrain.
+Subject: Tangible silver insulated industrial modules, robotic excavators and hauling rovers, realistic radiator fields, and a thin-film solar panel assembly building. Machines should look physically engineered, with convincing joints, tracks, piping, insulation seams and structural supports.
+Style/medium: Ultra-realistic photographic cinematic engineering concept, detailed and credible materials, 4K feel.
+Composition/framing: Wide landscape 16:9, ground-level viewpoint, machinery as the visual focus with industrial activity extending into the distance.
+Lighting/mood: Hard physical sunlight in vacuum, natural amber solar glare, strong clean shadows.
+Color palette: Dark charcoal and titanium with restrained natural amber highlights.
+Constraints: Original speculative engineering concept, not a depiction of an actual verified design.
+Avoid: People, atmosphere, haze, billowing dust, plants, glowing fantasy machinery, readable text, logos, watermarks, UI.
+
+---
+
+Use case: stylized-concept
+Asset type: photorealistic engineering concept image for the StarBound Dyson swarm simulator
+Primary request: Close-up of a free-flying solar collector satellite in heliocentric space.
+Scene/backdrop: Deep black vacuum. The warm bright Sun is far off frame; hard physical sunlight illuminates the satellite.
+Subject: Vast thin photovoltaic wings, a metallic central spacecraft bus, dark segmented radiators, and a small optical communications/power aperture. Show plausible physical supports, film tensioning, panel seams and thermal details.
+Style/medium: Ultra-realistic cinematic photographic engineering concept with tangible material detail and a 4K feel.
+Composition/framing: Wide landscape 16:9 close-up, satellite wings spanning the composition, oblique camera angle revealing thin surfaces and central bus depth.
+Lighting/mood: Hard clean solar illumination with warm metallic highlights and crisp dark shadows in vacuum.
+Color palette: Dark photovoltaic blue-black, charcoal segmented radiators, metallic titanium and silver, restrained warm sunlight.
+Constraints: Original speculative engineering concept, not an actual verified design.
+Avoid: People, atmosphere, haze, rocket flames, fantasy glowing shields, readable text, logos, watermarks, UI.

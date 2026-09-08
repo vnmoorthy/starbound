@@ -1,0 +1,286 @@
+{
+  "id": "47c2a445-6721-42c7-807a-4a700454a8c4",
+  "model": "gpt-5.6-sol",
+  "modelVersion": "1.0.0",
+  "startedAt": "2026-09-08T23:04:57.931Z",
+  "status": "completed",
+  "protocol": "starbound-policy-v1",
+  "reasoningEffort": "high",
+  "challenge": {
+    "year": 10,
+    "targetGridMW": 10,
+    "description": "Deliver at least 10 MW average grid electricity at year 10, using the least mined Mercury ore. Fixed seed, imported-tech reserve, efficiencies and transmission hardware."
+  },
+  "userObjective": "",
+  "baseline": {
+    "modelVersion": "1.0.0",
+    "mission": {
+      "years": 10,
+      "radiusAU": 0.4,
+      "seedPowerMW": 20,
+      "reinvestFraction": 0.65,
+      "expansionFraction": 0.18,
+      "panelKgM2": 2,
+      "radiatorRatio": 2,
+      "efficiency": 0.3,
+      "maxTemperatureK": 600,
+      "annualLoss": 0.02,
+      "oreYield": 0.25,
+      "oreBudgetMt": 1000,
+      "importedTechKt": 20,
+      "launchMultiplier": 1,
+      "shockYear": 3,
+      "shockSeverity": 0,
+      "linkMode": "optical-relay",
+      "transmitterM": 100,
+      "receiverM": 1000,
+      "pointingNrad": 2,
+      "groundReceiverKm": 5,
+      "gridLimitGW": 5,
+      "phaseDegrees": 120
+    },
+    "year": 10,
+    "gridMW": 13.233006549429229,
+    "generatedGW": 456.383781486616,
+    "cumulativeGridTWh": 1.1136443421085451,
+    "areaKm2": 178.8425300951716,
+    "minedMt": 3.919999999999997,
+    "importedUsedKt": 20,
+    "factoryModules": 90.99999999999994,
+    "temperatureK": 479.68615495874405,
+    "linkEfficiency": 0.00008284385132633192,
+    "bottleneck": "imports",
+    "thermalValid": true,
+    "audit": {
+      "maxMassResidualKg": 5.364418029785156e-7,
+      "energyUtilization": 0.008658585284671639,
+      "passed": true
+    },
+    "warnings": [
+      "Illustrative engineering scenario; no forecast of construction cost or readiness.",
+      "Circular display orbits are schematic. Collisions, eccentricity, station keeping and launch trajectories are not integrated.",
+      "Seed plant, imported technology reserve and Earth relay infrastructure are starting endowments; their delivery and capital cost are excluded.",
+      "Imported precision components are exhausted; industrial self-replication is not assumed.",
+      "Ground beam intensity or instantaneous grid capacity curtails transmission."
+    ]
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "proposal": {
+        "title": "Seed-Powered, Zero-Expansion Optical Mission",
+        "rationale": "Move inward to 0.3 AU and set the radiator ratio just above the 600 K thermal boundary, maximizing collector power per manufactured kilogram. Keep the optical relay because direct microwave transmission is highly lossy and space-only supplies no grid electricity. Set factory expansion and electricity reinvestment to zero: the fixed seed plant alone sustains limited production, all manufactured hardware becomes collectors, and no power is diverted from the grid. This should sharply reduce ore consumption versus the import-limited baseline while retaining substantial delivery margin. Uncertainty is concentrated in monthly energy-limited throughput and activation timing; the small radiator margin also depends on numerical treatment near the thermal cutoff.",
+        "changes": {
+          "radiusAU": 0.3,
+          "radiatorRatio": 1.46,
+          "reinvestFraction": 0,
+          "expansionFraction": 0,
+          "linkMode": "optical-relay"
+        }
+      },
+      "result": {
+        "modelVersion": "1.0.0",
+        "mission": {
+          "years": 10,
+          "radiusAU": 0.3,
+          "seedPowerMW": 20,
+          "reinvestFraction": 0,
+          "expansionFraction": 0,
+          "panelKgM2": 2,
+          "radiatorRatio": 1.46,
+          "efficiency": 0.3,
+          "maxTemperatureK": 600,
+          "annualLoss": 0.02,
+          "oreYield": 0.25,
+          "oreBudgetMt": 1000,
+          "importedTechKt": 20,
+          "launchMultiplier": 1,
+          "shockYear": 3,
+          "shockSeverity": 0,
+          "linkMode": "optical-relay",
+          "transmitterM": 100,
+          "receiverM": 1000,
+          "pointingNrad": 2,
+          "groundReceiverKm": 5,
+          "gridLimitGW": 5,
+          "phaseDegrees": 120
+        },
+        "year": 10,
+        "gridMW": 13.233006549429229,
+        "generatedGW": 36.820268221544914,
+        "cumulativeGridTWh": 1.1432112351183292,
+        "areaKm2": 8.11615023252276,
+        "minedMt": 0.1284940454695666,
+        "importedUsedKt": 0.6555818646406474,
+        "factoryModules": 1,
+        "temperatureK": 599.2331585180835,
+        "linkEfficiency": 0.0003593946266172527,
+        "bottleneck": "energy",
+        "thermalValid": true,
+        "audit": {
+          "maxMassResidualKg": 6.332993507385254e-8,
+          "energyUtilization": 1,
+          "passed": true
+        },
+        "warnings": [
+          "Illustrative engineering scenario; no forecast of construction cost or readiness.",
+          "Circular display orbits are schematic. Collisions, eccentricity, station keeping and launch trajectories are not integrated.",
+          "Seed plant, imported technology reserve and Earth relay infrastructure are starting endowments; their delivery and capital cost are excluded.",
+          "Ground beam intensity or instantaneous grid capacity curtails transmission."
+        ]
+      },
+      "grade": {
+        "feasible": true,
+        "minedMt": 0.1284940454695666,
+        "targetGridMW": 10,
+        "score": 0.8861367093735083
+      },
+      "elapsedSeconds": 146.621
+    },
+    {
+      "round": 2,
+      "proposal": {
+        "title": "Thermal-Edge Optical Mission",
+        "rationale": "Retain the proven zero-expansion, zero-reinvestment architecture and optical relay. Set 0.3 AU for maximum incident flux, while lowering radiator ratio from 1.46 to approximately 1.4527, just above the analytical 600 K boundary. This slightly improves generated power per manufactured kilogram without increasing industrial demand, so the seed-powered, energy-limited production path remains the least-mining strategy available through these controls. A small thermal margin is retained for floating-point evaluation. Uncertainty is dominated by monthly activation and retirement timing; because the previous design already reached the link ceiling, the improvement may preserve feasibility rather than materially reduce ore.",
+        "changes": {
+          "radiusAU": 0.3,
+          "radiatorRatio": 1.4527,
+          "reinvestFraction": 0,
+          "expansionFraction": 0,
+          "linkMode": "optical-relay"
+        }
+      },
+      "result": {
+        "modelVersion": "1.0.0",
+        "mission": {
+          "years": 10,
+          "radiusAU": 0.3,
+          "seedPowerMW": 20,
+          "reinvestFraction": 0,
+          "expansionFraction": 0,
+          "panelKgM2": 2,
+          "radiatorRatio": 1.4527,
+          "efficiency": 0.3,
+          "maxTemperatureK": 600,
+          "annualLoss": 0.02,
+          "oreYield": 0.25,
+          "oreBudgetMt": 1000,
+          "importedTechKt": 20,
+          "launchMultiplier": 1,
+          "shockYear": 3,
+          "shockSeverity": 0,
+          "linkMode": "optical-relay",
+          "transmitterM": 100,
+          "receiverM": 1000,
+          "pointingNrad": 2,
+          "groundReceiverKm": 5,
+          "gridLimitGW": 5,
+          "phaseDegrees": 120
+        },
+        "year": 10,
+        "gridMW": 13.233006549429229,
+        "generatedGW": 36.89385432443244,
+        "cumulativeGridTWh": 1.1432356291031607,
+        "areaKm2": 8.132370534408325,
+        "minedMt": 0.1284940454695666,
+        "importedUsedKt": 0.6555818646406474,
+        "factoryModules": 1,
+        "temperatureK": 599.9845495343982,
+        "linkEfficiency": 0.0003586778012690817,
+        "bottleneck": "energy",
+        "thermalValid": true,
+        "audit": {
+          "maxMassResidualKg": 6.332993507385254e-8,
+          "energyUtilization": 1,
+          "passed": true
+        },
+        "warnings": [
+          "Illustrative engineering scenario; no forecast of construction cost or readiness.",
+          "Circular display orbits are schematic. Collisions, eccentricity, station keeping and launch trajectories are not integrated.",
+          "Seed plant, imported technology reserve and Earth relay infrastructure are starting endowments; their delivery and capital cost are excluded.",
+          "Ground beam intensity or instantaneous grid capacity curtails transmission."
+        ]
+      },
+      "grade": {
+        "feasible": true,
+        "minedMt": 0.1284940454695666,
+        "targetGridMW": 10,
+        "score": 0.8861367093735083
+      },
+      "elapsedSeconds": 67.523
+    },
+    {
+      "round": 3,
+      "proposal": {
+        "title": "Minimum-Ore Thermal-Edge Optical Mission",
+        "rationale": "Use the proven minimum-production architecture: one seed-powered factory, no expansion, no orbital-power reinvestment, and the optical relay. Place collectors at 0.3 AU and set radiator ratio to 1.4526, marginally above the analytical 600 K boundary, maximizing delivered electricity per manufactured kilogram. Under the fixed just-in-time engine, seed-powered production continues throughout the mission, so the allowed policy fields provide no way to mine less than the demonstrated energy-limited quantity without disabling production; this proposal therefore targets the same apparent ore floor while maintaining more than 10 MW. Uncertainty is the extremely narrow thermal margin and floating-point treatment at the cutoff.",
+        "changes": {
+          "radiusAU": 0.3,
+          "radiatorRatio": 1.4526,
+          "reinvestFraction": 0,
+          "expansionFraction": 0,
+          "linkMode": "optical-relay"
+        }
+      },
+      "result": {
+        "modelVersion": "1.0.0",
+        "mission": {
+          "years": 10,
+          "radiusAU": 0.3,
+          "seedPowerMW": 20,
+          "reinvestFraction": 0,
+          "expansionFraction": 0,
+          "panelKgM2": 2,
+          "radiatorRatio": 1.4526,
+          "efficiency": 0.3,
+          "maxTemperatureK": 600,
+          "annualLoss": 0.02,
+          "oreYield": 0.25,
+          "oreBudgetMt": 1000,
+          "importedTechKt": 20,
+          "launchMultiplier": 1,
+          "shockYear": 3,
+          "shockSeverity": 0,
+          "linkMode": "optical-relay",
+          "transmitterM": 100,
+          "receiverM": 1000,
+          "pointingNrad": 2,
+          "groundReceiverKm": 5,
+          "gridLimitGW": 5,
+          "phaseDegrees": 120
+        },
+        "year": 10,
+        "gridMW": 13.233006549429229,
+        "generatedGW": 36.89486439545923,
+        "cumulativeGridTWh": 1.1432359639443375,
+        "areaKm2": 8.132593180483298,
+        "minedMt": 0.1284940454695666,
+        "importedUsedKt": 0.6555818646406474,
+        "factoryModules": 1,
+        "temperatureK": 599.994875313365,
+        "linkEfficiency": 0.00035866798174376426,
+        "bottleneck": "energy",
+        "thermalValid": true,
+        "audit": {
+          "maxMassResidualKg": 6.332993507385254e-8,
+          "energyUtilization": 1,
+          "passed": true
+        },
+        "warnings": [
+          "Illustrative engineering scenario; no forecast of construction cost or readiness.",
+          "Circular display orbits are schematic. Collisions, eccentricity, station keeping and launch trajectories are not integrated.",
+          "Seed plant, imported technology reserve and Earth relay infrastructure are starting endowments; their delivery and capital cost are excluded.",
+          "Ground beam intensity or instantaneous grid capacity curtails transmission."
+        ]
+      },
+      "grade": {
+        "feasible": true,
+        "minedMt": 0.1284940454695666,
+        "targetGridMW": 10,
+        "score": 0.8861367093735083
+      },
+      "elapsedSeconds": 35.272
+    }
+  ],
+  "completedAt": "2026-09-08T23:09:07.364Z"
+}

@@ -1,0 +1,77 @@
+{
+  "method": "deterministic coarse grid",
+  "challenge": {
+    "year": 10,
+    "targetGridMW": 10,
+    "description": "Deliver at least 10 MW average grid electricity at year 10, using the least mined Mercury ore. Fixed seed, imported-tech reserve, efficiencies and transmission hardware."
+  },
+  "evaluations": 1008,
+  "elapsedSeconds": 0.531984917,
+  "budgetNote": "1008 simulator evaluations, not an equal-compute comparison with the 3-proposal model trials.",
+  "best": {
+    "changes": {
+      "radiusAU": 0.3,
+      "radiatorRatio": 1.5,
+      "reinvestFraction": 0,
+      "expansionFraction": 0,
+      "linkMode": "optical-relay"
+    },
+    "result": {
+      "modelVersion": "1.0.0",
+      "mission": {
+        "years": 10,
+        "radiusAU": 0.3,
+        "seedPowerMW": 20,
+        "reinvestFraction": 0,
+        "expansionFraction": 0,
+        "panelKgM2": 2,
+        "radiatorRatio": 1.5,
+        "efficiency": 0.3,
+        "maxTemperatureK": 600,
+        "annualLoss": 0.02,
+        "oreYield": 0.25,
+        "oreBudgetMt": 1000,
+        "importedTechKt": 20,
+        "launchMultiplier": 1,
+        "shockYear": 3,
+        "shockSeverity": 0,
+        "linkMode": "optical-relay",
+        "transmitterM": 100,
+        "receiverM": 1000,
+        "pointingNrad": 2,
+        "groundReceiverKm": 5,
+        "gridLimitGW": 5,
+        "phaseDegrees": 120
+      },
+      "year": 10,
+      "gridMW": 13.233006549429229,
+      "generatedGW": 36.422211267798474,
+      "cumulativeGridTWh": 1.1430792782010488,
+      "areaKm2": 8.028408067846836,
+      "minedMt": 0.1284940454695666,
+      "importedUsedKt": 0.6555818646406474,
+      "factoryModules": 1,
+      "temperatureK": 595.1976888648132,
+      "linkEfficiency": 0.00036332243674421725,
+      "bottleneck": "energy",
+      "thermalValid": true,
+      "audit": {
+        "maxMassResidualKg": 6.332993507385254e-8,
+        "energyUtilization": 1,
+        "passed": true
+      },
+      "warnings": [
+        "Illustrative engineering scenario; no forecast of construction cost or readiness.",
+        "Circular display orbits are schematic. Collisions, eccentricity, station keeping and launch trajectories are not integrated.",
+        "Seed plant, imported technology reserve and Earth relay infrastructure are starting endowments; their delivery and capital cost are excluded.",
+        "Ground beam intensity or instantaneous grid capacity curtails transmission."
+      ]
+    },
+    "grade": {
+      "feasible": true,
+      "minedMt": 0.1284940454695666,
+      "targetGridMW": 10,
+      "score": 0.8861367093735083
+    }
+  }
+}
