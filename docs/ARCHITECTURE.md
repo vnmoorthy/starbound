@@ -31,7 +31,7 @@ The public deployment renders the simulator and replays without a key. Actual in
 | `lib/simulation/engine.ts` | Constants, mission validation, thermal/link calculations, industrial flow, accounting, output summary | No network, model calls or global mutable state |
 | `lib/simulation/experiment.ts` | Allowed policy fields, fixed challenge, host-side evaluation and score | Reject changes to fixed evidence/budgets |
 | `components/mission-control.tsx` | Mission state, controls, timeline, numerical metrics, imports/exports | Recalculate all results after valid edits |
-| `components/orbital-scene.tsx` | Canvas projection of sampled circular orbits | Schematic; not a trajectory engine |
+| `components/orbital-scene.tsx` | Three.js rendering of sampled circular orbits | Representative visualization; not a trajectory engine |
 | `components/mission-views.tsx` | Build sequence, link comparison, exclusive energy-use equivalents, methods | Distinguish assumptions from measurements |
 | `components/astra-lab.tsx` | Local experiment request, progress state, replay and apply action | Apply through numerical validation |
 | `scripts/astra-runner.mjs` | Structured Codex inference and three successive proposals | Fixed command arguments; model output cannot execute code |
@@ -107,7 +107,7 @@ GitHub Actions checks types, numerical tests and production compilation. The Sit
 
 ## Performance target
 
-At most 1,200 monthly steps and 1,600 representative particles. One default numerical simulation should run under 100 ms on the development laptop; report measured timing and environment in `results/verification.json`. UI rendering is capped around 30 fps and reduced-motion preferences stop automatic orbit motion. These bounds keep scientific state independent of visual particle density.
+At most 1,200 monthly steps and 2,400 representative collectors. One default numerical simulation should run under 100 ms on the development laptop; report measured timing and environment in `results/verification.json`. UI rendering targets around 30 fps and reduced-motion preferences stop automatic orbit motion. These bounds keep scientific state independent of visual particle density.
 
 ## StarBound v1.1 expansion
 

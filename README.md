@@ -124,6 +124,30 @@ The model cannot alter constants or fixed budgets through its proposal. The engi
 
 [Detailed architectural plan](docs/ARCHITECTURE.md) · [Scientific model](docs/PHYSICS.md) · [Mercury-to-Earth roadmap](docs/MERCURY-TO-EARTH.md) · [Office-hours builder assessment](docs/DESIGN.md)
 
+## From Mercury to Earth
+
+```mermaid
+flowchart LR
+  Earth[Earth: robots and precision imports] --> Seed[Deliver Mercury industrial seed]
+  Seed --> Mine[Robotic excavation]
+  Mine --> Refine[Refine feedstock]
+  Refine --> Factory[Manufacture collectors and radiators]
+  Factory --> Launch[Electromagnetic launch]
+  Launch --> Insert[Transfer and orbital insertion]
+  Insert --> Swarm[Heliocentric solar swarm]
+  Swarm --> Return[Power returned to Mercury]
+  Return --> Factory
+  Swarm --> Optical[Optical link to orbital relay]
+  Optical --> Microwave[Microwave downlink]
+  Microwave --> Grid[Earth rectenna and grid]
+  Grid --> Uses[Computing / water / hydrogen]
+  Swarm --> Space[Space computing / habitat / propulsion bounds]
+```
+
+This is the proposed engineering sequence. The monthly simulator models constrained industrial growth and power delivery; landing, launch and civilization tabs calculate separate engineering bounds. It does not simulate individual robot motion or certify a flight design.
+
+[One-minute demo script](docs/ONE-MINUTE-DEMO.md) · [Submission answers](docs/SUBMISSION.md) · [Validation record](docs/VALIDATION.md)
+
 ## What could use the power?
 
 At the default year-30 snapshot, average Earth output is about 13.23 MW, equivalent to 0.116 TWh/year. Illustrative alternatives include about **29 million m³ of desalinated water**, **2,109 tonnes of hydrogen**, **29,000 household energy equivalents**, or a **13.23 MW computing facility load**.
