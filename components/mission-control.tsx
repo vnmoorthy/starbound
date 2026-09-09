@@ -564,9 +564,9 @@ export default function MissionControl() {
               <div className="scene-topline">
                 <span>
                   <i />
-                  HELIOCENTRIC VIEW / 3D
+                  SOLAR SWARM / MISSION VIEW
                 </span>
-                <span>DRAG TO ORBIT · SCROLL TO ZOOM</span>
+                <span>CONCEPT + INTERACTIVE ORBITS</span>
               </div>
               <OrbitalScene mission={mission} row={row} />
               <div className="scene-bottom">

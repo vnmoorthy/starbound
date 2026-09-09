@@ -12,3 +12,7 @@ StarBound v1.1, September 8, 2026.
 - **Generated imagery:** two inspected concept images, visibly labeled as generated concepts. Their realism does not establish physical feasibility.
 
 The engine is a reduced-order model. Validation is of the stated equations, numerical boundaries and accounting, not of a physical Mercury factory or a complete Dyson sphere. Website controls for robots operate aggregate availability; individual robot motion and manufacturing equipment dynamics are not integrated. The civilization, mass-driver and landing calculators are separately labeled bounds.
+
+## Production interaction checks
+
+All nine navigation tabs were opened in a hydrated production browser. Solar occultation and fleet safe mode each changed Earth delivery to zero. The baseline receiver ceiling is explained by persistent telemetry. Operational dials now include labeled numeric inputs for direct keyboard entry. The default cinematic Sun/swarm image is explicitly a generated concept; live orbit rendering remains selectable. A WebGL failure preserves the concept image and numerical controls rather than leaving an empty stage. The headless test environment does not validate native GPU performance.

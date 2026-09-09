@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { type Mission, type Snapshot } from '@/lib/simulation/engine';
 type View = 'swarm' | 'system' | 'polar';
@@ -15,6 +16,7 @@ export default function OrbitalScene({
     data = useRef({ mission, row }),
     viewRef = useRef<View>('swarm');
   const [view, setView] = useState<View>('swarm'),
+    [mode, setMode] = useState<'concept' | 'live'>('concept'),
     [error, setError] = useState(''),
     [paused, setPaused] = useState(false);
   const pausedRef = useRef(false);
@@ -29,7 +31,8 @@ export default function OrbitalScene({
   }, [paused]);
   useEffect(() => {
     const host = mount.current;
-    if (!host) return;
+    if (!host || mode !== 'live') return;
+    setError('');
     let stopped = false,
       cleanup = () => {};
     Promise.all([
@@ -53,7 +56,7 @@ export default function OrbitalScene({
             alpha: false,
             powerPreference: 'high-performance',
           });
-          renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+          renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
           renderer.outputColorSpace = T.SRGBColorSpace;
           renderer.toneMapping = T.ACESFilmicToneMapping;
           renderer.toneMappingExposure = 0.85;
@@ -319,13 +322,14 @@ export default function OrbitalScene({
       stopped = true;
       cleanup();
     };
-  }, []);
+  }, [mode]);
   return (
     <>
-      <div className="space-viewport" ref={mount} />
+      {(mode === 'concept' || error) && <div className="swarm-cinematic"><Image src="/assets/dyson-swarm-hero.png" alt="Generated concept of independent solar collectors surrounding the Sun in a Dyson swarm" fill unoptimized priority sizes="100vw" /><div className="cinematic-title"><span>THE STARBOUND INITIATIVE</span><h2>A star.<br />A million possibilities.</h2><p>Mercury to solar orbit. Solar orbit to Earth.</p></div></div>}
+      <div className="space-viewport" ref={mount} style={{ visibility: mode === 'live' && !error ? 'visible' : 'hidden' }} />
       {error && (
         <div className="render-error">
-          <strong>3D view unavailable</strong>
+          <strong>Concept view · WebGL unavailable</strong>
           <p>
             The numerical simulation still works. Enable WebGL to view the
             swarm.
@@ -333,7 +337,9 @@ export default function OrbitalScene({
         </div>
       )}
       <div className="camera-controls">
-        {(['swarm', 'system', 'polar'] as View[]).map((v) => (
+        <Button variant="ghost" size="sm" className={mode === 'concept' ? 'selected' : ''} onClick={() => setMode('concept')}>Cinematic concept</Button>
+        <Button variant="ghost" size="sm" className={mode === 'live' ? 'selected' : ''} onClick={() => setMode('live')}>Live orbits</Button>
+        {mode === 'live' && (['swarm', 'system', 'polar'] as View[]).map((v) => (
           <Button
             key={v}
             variant="ghost"
@@ -344,12 +350,12 @@ export default function OrbitalScene({
             {v}
           </Button>
         ))}
-        <Button variant="ghost" size="sm" onClick={() => setPaused((p) => !p)}>
+        {mode === 'live' && <Button variant="ghost" size="sm" onClick={() => setPaused((p) => !p)}>
           {paused ? 'Animate' : 'Freeze view'}
-        </Button>
+        </Button>}
       </div>
       <div className="scene-scale">
-        Representative collectors · sizes enlarged · visual time accelerated
+        {mode === 'concept' ? 'AI-generated concept · live calculations in telemetry above' : 'Representative collectors · sizes enlarged · visual time accelerated'}
       </div>
     </>
   );

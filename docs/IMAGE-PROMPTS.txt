@@ -23,3 +23,6 @@ Lighting/mood: Hard clean solar illumination with warm metallic highlights and c
 Color palette: Dark photovoltaic blue-black, charcoal segmented radiators, metallic titanium and silver, restrained warm sunlight.
 Constraints: Original speculative engineering concept, not an actual verified design.
 Avoid: People, atmosphere, haze, rocket flames, fantasy glowing shields, readable text, logos, watermarks, UI.
+
+
+StarBound Sun/swarm hero brief: Photorealistic cinematic widescreen Dyson swarm surrounding the Sun, independent metallic collectors on inclined orbital shells, granular orange Sun central-right, dark left quarter for heading, black vacuum, gold highlights, no factories, no text or logos, no solid shell. Generated once, September 8, 2026. Concept artwork, not a scientific visualization.

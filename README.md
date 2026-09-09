@@ -14,9 +14,9 @@ A Dyson swarm laboratory with **Astra-directed experiments** and an independent 
 
 </div>
 
-[![StarBound Mercury factory concept](public/assets/mercury-factory.png)](https://starbound.vnmoorthy.chatgpt.site)
+[![StarBound Dyson swarm surrounding the Sun](public/assets/dyson-swarm-hero.png)](https://starbound.vnmoorthy.chatgpt.site)
 
-*Mercury industrial concept generated for StarBound; the live simulator contains the interactive 3D scene.*
+*The StarBound vision: independent solar collectors surrounding the Sun. Generated concept artwork; switch to Live orbits in the simulator for the interactive 3D view.*
 
 **What if an AI had to defend a megastructure plan against a material ledger, a thermal limit, and a real transmission budget?**
 

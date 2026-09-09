@@ -60,8 +60,10 @@ export function Dial({
     <div className="ops-dial">
       <div>
         <span>{label}</span>
-        <strong>
-          {fmt(value, step < 1 ? 2 : 0)} <em>{unit}</em>
+        <strong className="dial-value">
+          <input aria-label={`${label} value`} type="number" min={min} max={max} step={step} value={value}
+            onChange={(e) => { const n = e.currentTarget.valueAsNumber; if (Number.isFinite(n)) set(Math.min(max, Math.max(min, n))); }} />
+          <em>{unit}</em>
         </strong>
       </div>
       <Slider
