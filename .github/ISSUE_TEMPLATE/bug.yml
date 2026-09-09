@@ -1,0 +1,28 @@
+name: Report a bug
+description: A control, calculation, export or rendering behavior is not working.
+title: '[Bug]: '
+body:
+  - type: textarea
+    id: behavior
+    attributes:
+      label: What happened?
+      description: Include the tab, action, expected behavior and actual result.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: How can we reproduce it?
+      description: List the steps. Attach an exported scenario JSON when the issue involves a result.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: Browser, operating system, public demo or local commit
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting evidence
+      description: Screenshots or error messages are useful. Do not include local lab tokens or credentials.

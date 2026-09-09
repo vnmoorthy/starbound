@@ -1,0 +1,34 @@
+name: Suggest a scientific correction
+description: Challenge an equation, assumption, unit, system boundary or interpretation.
+title: '[Science]: '
+body:
+  - type: dropdown
+    id: category
+    attributes:
+      label: What needs attention?
+      options:
+        - Equation or implementation
+        - Scenario assumption
+        - Missing physical process
+        - Documentation or interpretation
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current claim or behavior
+      description: Link the equation, source line or documentation passage and include units.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed correction and evidence
+      description: State the system boundary and cite a primary source or provide a reproducible derivation.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: How should we validate it?
+      description: A reference result, limiting case or independent calculation is particularly useful.

@@ -1,111 +1,106 @@
 <div align="center">
 
-<a href="https://starbound.vnmoorthy.chatgpt.site">
-  <img src="public/assets/dyson-swarm-hero.png" alt="StarBound: a Dyson swarm of independent solar collectors surrounding the Sun" width="100%">
-</a>
-
 # StarBound
 
-### Build a civilization powered by a star. Then let the physics argue back.
+### Explore a civilization powered by a star.
 
-**An interactive Dyson swarm laboratory.** Robotic industry on Mercury, solar collectors in heliocentric orbit, power beamed to Earth.
-Mission controls rerun a conservation-checked monthly model; landing, launcher-sizing and civilization controls run separate engineering calculators. GPT-6 Astra proposes bounded mission policies, which the host engine independently evaluates.
+An interactive Dyson swarm laboratory — from Mercury resources to electricity on Earth.
 
-[![Live demo](https://img.shields.io/badge/live_demo-starbound.vnmoorthy.chatgpt.site-f5bb6b?style=for-the-badge&logo=rocket&logoColor=black)](https://starbound.vnmoorthy.chatgpt.site)
+[**OPEN MISSION CONTROL ↗**](https://starbound.vnmoorthy.chatgpt.site) · [**DOWNLOAD THE PITCH DECK**](https://starbound.vnmoorthy.chatgpt.site/StarBound-Mission-Briefing.pptx) · [**READ THE ARCHITECTURE**](docs/ARCHITECTURE.md)
 
 [![CI](https://github.com/vnmoorthy/starbound/actions/workflows/ci.yml/badge.svg)](https://github.com/vnmoorthy/starbound/actions/workflows/ci.yml)
-[![Tests](https://img.shields.io/badge/tests-20_passing-2ea043?style=flat-square)](tests)
-[![Node](https://img.shields.io/badge/node-%E2%89%A524-339933?style=flat-square&logo=node.js&logoColor=white)](package.json)
-[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?style=flat-square&logo=typescript&logoColor=white)](tsconfig.json)
-[![Three.js](https://img.shields.io/badge/Three.js-r186-000000?style=flat-square&logo=three.js&logoColor=white)](components/orbital-scene.tsx)
-[![GPT-6 Astra](https://img.shields.io/badge/GPT--6_Astra-in_the_loop-412991?style=flat-square&logo=openai&logoColor=white)](docs/ASTRA.md)
-[![License: MIT](https://img.shields.io/badge/license-MIT-c6a16b?style=flat-square)](LICENSE)
+[![MIT](https://img.shields.io/badge/license-MIT-c6a16b?style=flat-square)](LICENSE)
+[![OpenAI](https://img.shields.io/badge/GPT--6_Astra-experiments-566d81?style=flat-square)](docs/ASTRA.md)
 
-[**Launch the simulator**](https://starbound.vnmoorthy.chatgpt.site) · [**Mission briefing deck**](deliverables/StarBound-Mission-Briefing.pptx) · [**The physics**](docs/PHYSICS.md) · [**The Astra experiment**](docs/ASTRA.md) · [**Architecture**](docs/ARCHITECTURE.md)
+<a href="https://starbound.vnmoorthy.chatgpt.site"><img src="public/assets/dyson-swarm-hero.png" alt="StarBound — independent solar collectors surrounding the Sun" width="100%"></a>
 
-*Hero image is generated concept artwork. The opening view supports drag and zoom. Choose **Live orbits** for the orbital visualization, with an interactive projected fallback when WebGL is unavailable.*
+<sub>Generated concept artwork. The application separates its animated concept view, orbital visualization and numerical simulation.</sub>
 
 </div>
 
----
+**A megastructure is an engineering problem before it is a spectacle.** StarBound lets you change the industrial plan, break the thermal budget, lose the power beam, and inspect what survives. GPT-6 Astra proposes a policy; a deterministic engine calculates its consequences.
 
-## Why this exists
+[Try it](https://starbound.vnmoorthy.chatgpt.site) · [60-second tour](#a-mission-in-sixty-seconds) · [Measured results](#astra-proposes-the-engine-measures) · [Run locally](#run-locally) · [Documentation](docs/README.md)
 
-Dyson swarm imagery conveys enormous scale. StarBound explores a different question: how do material supply, cooling and power transmission constrain a proposed system?
+## A mission in sixty seconds
 
-StarBound enforces its declared physical constraints within an explicitly simplified model.
+<a href="https://starbound.vnmoorthy.chatgpt.site"><img src="docs/media/starbound-demo.gif" alt="Recorded StarBound demo: the animated swarm, zoom controls, receiver resizing and a blocked Earth link" width="100%"></a>
 
-- **Mass is accounted for.** Mined ore plus consumed imports equals tailings plus new factory mass plus active and retired collector mass. The engine records monthly residuals; its audit threshold is `1e-8 × max(1 kg, manufactured mass)`, not a fixed absolute tolerance.
-- **Energy is budgeted.** Mining, refining, manufacturing and electromagnetic launch each cost joules. Production stalls when the joules run out.
-- **Cooling constrains output.** At 0.3 AU and radiator ratio 0.5, the modeled temperature exceeds the default 600 K design limit and the engine disables orbital electrical output. This is a model rule, not a validated failure prediction.
-- **Delivery constrains useful power.** Under the baseline parameters, switching from optical relay to direct interplanetary microwave changes Earth delivery from **13.23 MW to 127 W**. These are architecture-specific scenario results, not universal limits.
-- **The AI does not get to grade its own homework.** GPT-6 Astra proposes. A deterministic TypeScript engine evaluates. Both records are public.
+*Recorded from the public application. The opening motion is illustrative concept animation; the power figures are calculated by the engine.* [Watch the MP4](docs/media/starbound-demo.mp4) · [Narration script](docs/ONE-MINUTE-DEMO.md)
 
-## Sixty seconds in the simulator
+| Try this | Watch this change |
+| :--- | :--- |
+| **Explore the swarm** | Collectors animate automatically. Pan, zoom, pause, or switch to Live orbits. |
+| **Resize Earth's receiver** | Set its diameter to 1 km: baseline Earth power falls from **13.23 MW to 3.48 MW**. |
+| **Lose the transmission path** | Load *Sun blocks Earth transmission*: Earth delivery becomes **0 W**. |
+| **Stop the excavation fleet** | Safe mode reruns the mission with no excavation; production loses its feedstock. |
+| **Break the cooling design** | At 0.3 AU and radiator ratio 0.5, the model reaches **783 K** and disables electrical output. |
+| **Apply Astra's proposal** | Recompute its recorded policy against the same constraints and inspect the result. |
 
-<table>
-<tr>
-<td width="50%"><img src="public/assets/mercury-factory.png" alt="Concept: robotic mining and manufacturing on Mercury" width="100%"></td>
-<td width="50%"><img src="public/assets/solar-collector.png" alt="Concept: a thin-film solar collector with radiator in heliocentric orbit" width="100%"></td>
-</tr>
-<tr>
-<td align="center"><sub>Mercury industrial seed (generated concept)</sub></td>
-<td align="center"><sub>Collector and radiator (generated concept)</sub></td>
-</tr>
-</table>
+Nine tabs cover mission control, robots, manufacturing, collectors, Earth power, civilization, Astra, construction and research. The power readout stays visible across them. [Complete control guide](docs/CONSOLE-GUIDE.md)
 
-1. **Break the thermal budget.** Orbital radius to 0.3 AU, radiator ratio to 0.5. Watch the design temperature hit 783 K and orbital electricity read exactly zero. Add radiator area to recover.
-2. **Lose the beam.** Reset, then switch the Earth link to direct microwave. 13.23 MW becomes 127 W with the baseline mission settings and the newly selected architecture.
-3. **Block the Sun.** Set the Earth phase angle to 180°. The line of sight crosses the solar disk and delivery drops to nothing.
-4. **Shut down the robots.** Open Robot control and put the excavation fleet in safe mode. Follow the missing feedstock through refining, manufacturing and launch.
-5. **Ask Astra.** Open the Astra lab, apply its recorded first proposal, and watch the engine recompute the trajectory it was graded on.
-
-Ten scenario presets ship with the app (nine perturbations plus the baseline): collector thermal failure, direct microwave challenge, excavation robots offline, factory assembly shutdown, high pointing jitter, launcher failure at year 3, no precision imports, refinery shutdown, Sun blocks Earth transmission, and the baseline with finite imports.
-
-## What is in the console
-
-| Tab | What you control | What pushes back |
-|---|---|---|
-| **Mission control** | Orbit radius, efficiency, collector mass, radiator ratio, retirement | Live 3D swarm, design temperature, 30-year power trajectory, bottleneck readout |
-| **Robot control** | Excavation availability, safe mode, comms-loss drill, seed delivery, landing mass | Feedstock starvation propagating downstream |
-| **Manufacturing** | Refinery and assembly availability, ore yield, factory expansion, energy reinvestment | Conserved mass ledger, collector bill of materials |
-| **Collector control** | Orbit, radiator ratio, retirement, launcher throughput; separate acceleration, payload and charging-power inputs | Calculated track length, pulse power, escape and transfer bounds |
-| **Earth power** | Ground receiver diameter, pointing jitter, phase geometry, link mode; additional apertures in Mission control → link | Gaussian capture, assumed 10 W/m² peak-intensity ceiling, grid cap, occultation |
-| **Civilization** | Capture fraction, habitat geometry, computing radiators, kinetic energy | Near-total-capture mass and heat bounds |
-| **Build sequence** | Read the six-stage construction sequence | Material ledger for the current mission |
-| **Astra lab** | A bounded policy objective | Independent grading, Sol baseline, brute-force search |
-| **Research** | Read methods and follow source links | Documented equations, assumptions and limitations |
-
-Import or export a complete mission as JSON. Download the monthly trajectory as CSV. No account required.
-
-## The Astra experiment
-
-The challenge: deliver **at least 10 MW to Earth at month 120**, after a 75% availability factor, while mining as little Mercury ore as possible. Astra may change five policy fields. It cannot touch constants, budgets or the grader.
+## From Mercury to Earth
 
 ```mermaid
 flowchart LR
-  Astra[GPT-6 Astra<br/>proposes a policy] -->|structured JSON,<br/>schema-enforced| Validate[Host validates<br/>allowed fields]
-  Validate --> Engine[Deterministic engine<br/>recomputes 120 months]
-  Engine --> Grade[Independent grade<br/>feasible? mined ore?]
-  Grade -->|measured feedback| Astra
-  Grade --> Record[(Published record<br/>results/*.json)]
+  Seed[Imported robots<br/>and industrial seed] --> Mine[Mercury excavation]
+  Mine --> Refine[Refining]
+  Refine --> Build[Collector manufacturing]
+  Build --> Launch[Launch and insertion]
+  Launch --> Swarm[Solar swarm]
+  Swarm -->|Reinvested power| Build
+  Swarm --> Optical[Optical orbital relay]
+  Optical --> Ground[Microwave downlink<br/>and Earth grid]
+  Swarm -.-> Future[Separate space-use<br/>and dense-swarm estimates]
+  classDef solar fill:#312416,stroke:#c6a16b,color:#fff2d4;
+  classDef earth fill:#142836,stroke:#73a7c4,color:#d8f2ff;
+  class Swarm solar;
+  class Optical,Ground earth;
 ```
 
-Astra's first proposal identified the receiver-saturation issue already visible in the baseline feedback and proposed reducing production. The host verified the result. It cut mined ore from **3.92 Mt to 0.128 Mt** while still meeting the target.
+This is a proposed engineering sequence. The monthly model constrains industrial throughput, mass, energy and power delivery. Landing, detailed launcher sizing and near-total-capture estimates are separate calculators. [Twelve-stage process](docs/MERCURY-TO-EARTH.md) · [Equations and assumptions](docs/PHYSICS.md)
 
-| Method | Evaluations | Best mined ore | Endpoint Earth power | Wall clock |
-|---|---:|---:|---:|---:|
-| **GPT-6 Astra** | 3 proposals | 0.128494 Mt | 13.233 MW | 162 s |
+## Astra proposes. The engine measures.
+
+**The challenge:** deliver at least **10 MW at month 120** while minimizing mined Mercury ore. The endpoint power already includes an assumed 75% link availability. Astra may change five policy fields; it cannot change the fixed budgets, physical constants or scoring rules.
+
+| Method | Evaluations | Best mined ore | Endpoint Earth power | Recorded time |
+| :--- | ---: | ---: | ---: | ---: |
+| **GPT-6 Astra** | 3 proposals | **0.128494 Mt** | **13.233 MW** | 162 s |
 | GPT-5.6 Sol | 3 proposals | 0.128494 Mt | 13.233 MW | 249 s |
-| Coarse grid search | 1,008 simulations | 0.128494 Mt | 13.233 MW | 0.5 s |
+| Conventional grid search | 1,008 simulations | 0.128494 Mt | 13.233 MW | 0.5 s |
 
-**They tied.** We are publishing that, because a benchmark you only report when you win is not a benchmark. Several tested zero-expansion, zero-reinvestment policies reached the same score. This narrow experiment did not separate the models. The protocol, the raw records, and the harder follow-up task are all in [docs/ASTRA.md](docs/ASTRA.md).
+**The mining scores tied.** One experiment per model does not establish general superiority or a latency benchmark. Search had a different evaluation budget. The recorded policies reduce mining from the ten-year baseline's **3.92 Mt** while preserving its endpoint delivered power under the fixed receiving assumptions.
 
-The point was never that Astra beats Sol at Dyson spheres. The point is a loop where an AI's engineering reasoning has to survive a reality check it does not control, with every attempt on the record.
+The public site includes the real recorded experiments. Live model inference runs through the included local adapter using your own Codex login.
 
-[Astra record](results/astra.json) · [Sol record](results/sol.json) · [Search record](results/search.json) · [Comparison](results/comparison.json) · [Protocol](docs/ASTRA.md)
+[Protocol](docs/ASTRA.md) · [Astra record](results/astra.json) · [Sol record](results/sol.json) · [Search record](results/search.json) · [Comparison JSON](results/comparison.json)
 
-## Run it
+## One numerical authority
+
+```mermaid
+flowchart TB
+  Controls[Mission controls] --> Engine[Deterministic monthly engine]
+  Engine --> Results[Telemetry, ledger and exports]
+  Diagnostics[Separate engineering calculators] --> Bounds[Landing, launch and space-use bounds]
+  subgraph Local experiment
+    Astra[GPT-6 Astra] --> Proposal[Structured proposal]
+    Proposal --> Validate[Allowed-field validation]
+    Validate --> Engine
+    Engine --> Grade[Independent grade]
+    Grade -->|Measured feedback| Astra
+  end
+  Grade --> Record[Published JSON records]
+  Record --> Replay[Public experiment replay]
+  classDef core fill:#18272e,stroke:#7aabb8,color:#edf8ff;
+  class Engine,Validate,Grade core;
+```
+
+The same TypeScript engine runs in the browser and in Node experiments. It tracks monthly material residuals, production energy, thermal limits, Gaussian-beam capture and receiver caps. React and Three.js render the console; the model supplies proposals and explanations, not physical metrics or grades.
+
+[Detailed architecture and execution plan](docs/ARCHITECTURE.md) · [20 numerical tests](tests) · [Validation](docs/VALIDATION.md) · [Claim audit](docs/CLAIM-AUDIT.md)
+
+## Run locally
 
 Requires **Node.js 24+**.
 
@@ -116,24 +111,17 @@ npm ci
 npm run dev -- --hostname 127.0.0.1 --port 3000
 ```
 
-```bash
-npm test                    # 20 physical-invariant and boundary tests
-npm run typecheck           # strict TypeScript
-npm run build               # production build
-npm run simulate            # standalone numerical summary
-npm run experiment:search   # deterministic 1,008-point reference
-```
+Open **http://127.0.0.1:3000**. The simulator and recorded experiments work without a model account.
 
-### Run Astra live on your own machine
-
-The repo ships the official Codex CLI. Live runs use **your** login and quota. The public site never sees your credentials.
+<details>
+<summary><strong>Run a live Astra experiment</strong></summary>
 
 ```bash
-npx codex login status      # or: npx codex login
+npx codex login status       # If needed: npx codex login
 npm run lab
 ```
 
-Open the temporary local URL it prints. The bridge binds to loopback only, requires a per-process token, and accepts one run at a time. To regenerate the published records:
+Open the temporary local URL printed by the adapter. It binds to loopback, requires a per-process token, and accepts one run at a time. Keep the token private. Inference consumes your own model quota; the public website does not receive your login credentials.
 
 ```bash
 npm run experiment:astra
@@ -141,73 +129,47 @@ npm run experiment:sol
 node scripts/summarize-results.mjs
 ```
 
-## How it is built
+[Full setup and comparison protocol](docs/ASTRA.md)
 
-```mermaid
-flowchart TB
-  subgraph Browser
-    UI[React 19 + Three.js console] --> Engine
-    Engine[lib/simulation/engine.ts<br/>pure TypeScript, no external imports] --> UI
-  end
-  subgraph Laptop
-    Lab[Loopback lab bridge] --> Codex[Codex CLI<br/>gpt-6-astra / gpt-5.6-sol]
-    Codex --> Lab
-    Lab --> Engine2[Same engine, Node]
-  end
-  Engine2 --> Results[(results/*.json)]
-  Results --> UI
+</details>
+
+<details>
+<summary><strong>Validate or reproduce the numerical results</strong></summary>
+
+```bash
+npm run typecheck
+npm run lint
+npm test
+npm run build
+npm run simulate
+npm run experiment:search
 ```
 
-The monthly engine runs in both the browser and Node experiments. Separate engineering calculators supply landing, launcher and civilization diagnostics. The recorded 100-run mean for a default 30-year simulation was 0.522 ms on macOS arm64 with Node 24.14.1; this is not a browser frame-rate or cross-device benchmark. Physical metrics and scores are host-calculated; model-written explanations are shown separately.
+CI runs types, lint, numerical tests and production compilation. Ordinary validation does not call a model. The experimental records retain engine v1.0; the current v1.1 defaults reproduce their baseline behavior.
 
-| | |
-|---|---|
-| Engine | Deterministic TypeScript, monthly steps, SI units, mass residual checked every step |
-| Physics | Inverse-square flux, Stefan–Boltzmann thermal balance, Gaussian-beam diffraction, Mercury escape energetics, Hohmann bounds, rocket equation |
-| UI | React 19, Three.js on demand, Tailwind, shadcn primitives, reduced-motion aware, WebGL fallback |
-| AI loop | Codex CLI, `--output-schema` enforced JSON, read-only sandbox, array arguments (proposal fields are validated; the host invokes fixed command arguments) |
-| Tests | 20 invariants: conservation, thermal cutoff, occultation, link caps, input rejection, grader independence |
-| Hosting | OpenAI site hosting, static replay, zero server-side secrets |
-
-Deeper reading: [Architecture](docs/ARCHITECTURE.md) · [Physics](docs/PHYSICS.md) · [Mercury-to-Earth sequence](docs/MERCURY-TO-EARTH.md) · [Research register](docs/RESEARCH.md) · [Validation record](docs/VALIDATION.md) · [Claim audit](docs/CLAIM-AUDIT.md)
+</details>
 
 ## What the power could do
 
-At the baseline year-30 snapshot, Earth receives about **13.23 MW**, roughly 0.116 TWh per year. That is one of: 29 million m³ of desalinated water, 2,109 tonnes of hydrogen, 29,000 household-years of electricity, or a 13 MW compute facility. Pick one. They share the same budget. Conversion assumptions are in [the physics doc](docs/PHYSICS.md#7-what-useful-power-means).
+Baseline year-30 Earth delivery is approximately **13.23 MW**, or **0.116 TWh/year**. Illustrative alternatives are **29 million m³ of desalinated water**, **2,109 tonnes of hydrogen**, **29,000 household-years of electricity**, or a **13.23 MW computing-facility load**.
 
-## Where the model stops
+Each uses the entire same electricity budget. These are energy equivalents, not demonstrated plants or solved global problems. [Conversion assumptions](docs/PHYSICS.md#7-what-useful-power-means)
 
-This is a reduced-order engineering model, not a construction plan.
+## Read deeper
 
-The seed plant, imported precision components and Earth relay are assumed endowments. Extraction chemistry, real manufacturing readiness, collision-free trajectories, station keeping, relay cooling, weather and lifecycle economics are not validated. The moving swarm is a representative orbit sample, not an integrated ephemeris. Dense-swarm radiative feedback on the star, the open problem in Wright's review, is outside the sparse model. Robots are represented by aggregate availability, not simulated navigation. The monthly engine stops growth at 1% projected coverage; near-total-capture estimates are separate diagnostic bounds, not a dense-swarm simulation.
+| If you want to… | Start here |
+| :--- | :--- |
+| Understand every control | [Console guide](docs/CONSOLE-GUIDE.md) |
+| Review the engineering | [Physics](docs/PHYSICS.md) · [Research register](docs/RESEARCH.md) |
+| Extend the application | [Architecture](docs/ARCHITECTURE.md) · [Contributing](CONTRIBUTING.md) |
+| Reproduce the AI experiment | [Astra protocol](docs/ASTRA.md) · [Recorded evidence](results/comparison.json) |
+| Present the project | [PowerPoint](deliverables/StarBound-Mission-Briefing.pptx) · [Demo script](docs/ONE-MINUTE-DEMO.md) |
+| Challenge a claim | [Claim audit](docs/CLAIM-AUDIT.md) · [Report a scientific issue](https://github.com/vnmoorthy/starbound/issues/new?template=scientific-correction.yml) |
 
-No construction date, energy price, demand, or model superiority is claimed. If you can break an invariant or source a better constant, [open an issue](https://github.com/vnmoorthy/starbound/issues). Reproducible failures are the most useful contribution.
+## Scope and next steps
 
-## Roadmap
+StarBound is a **reduced-order engineering model**, not a validated construction plan. The seed infrastructure and Earth relay are assumed endowments. Extraction chemistry, robot navigation, manufacturing readiness, collision avoidance, station keeping, relay cooling and lifecycle economics are not validated. Monthly growth stops at 1% projected coverage; near-total-capture estimates use separate bounds.
 
-- [ ] Harder Astra task with a held-out fault revealed after round one, scored on cumulative delivered energy with a real interior optimum
-- [ ] Thermal margin enforced in the grader, not just documented
-- [ ] Explicit inventories and factory lead times
-- [ ] Return-link geometry and orbital trajectories
-- [ ] Uncertainty bands on every headline number
-- [ ] Independent domain review
+Next: explicit inventories and factory delays, time-dependent trajectories and beam networks, uncertainty analysis, and a harder repeated Astra/Sol evaluation with held-out failures. [Execution plan](docs/ARCHITECTURE.md#execution-plan)
 
-## Research and inspiration
-
-- Jason T. Wright, [*Dyson Spheres*](https://arxiv.org/abs/2006.16734), Serbian Astronomical Journal 200 (2020)
-- NASA/JPL, [planetary physical parameters](https://ssd.jpl.nasa.gov/planets/phys_par.html)
-- NASA, [Mercury surface mineralogy](https://ntrs.nasa.gov/citations/20160002643)
-- NASA OTPS, [space-based solar power assessment](https://www.nasa.gov/organizations/otps/space-based-solar-power-report/)
-- Kurzgesagt, [*How to Build a Dyson Sphere*](https://www.youtube.com/watch?v=pP44EPBMb8A)
-
-## Contributing and license
-
-Built by [**vnmoorthy**](https://github.com/vnmoorthy) at the GPT-6 Astra Hackathon SF, September 8, 2026, with AI assistance. See [CONTRIBUTING.md](CONTRIBUTING.md) and [THIRD_PARTY.md](THIRD_PARTY.md). Code is [MIT](LICENSE). Mission-briefing aesthetic is original; no affiliation with SpaceX, NASA, OpenAI or the cited authors is implied.
-
-<div align="center">
-
-**If the numbers pushing back made you smile, a star helps other people find this.**
-
-[![Star on GitHub](https://img.shields.io/github/stars/vnmoorthy/starbound?style=social)](https://github.com/vnmoorthy/starbound)
-
-</div>
+Built by **[vnmoorthy](https://github.com/vnmoorthy)** with AI assistance at the GPT-6 Astra Hackathon SF, September 8, 2026. [MIT license](LICENSE) · [Third-party notices](THIRD_PARTY.md). No affiliation or endorsement by SpaceX, NASA, OpenAI or the cited researchers is implied.

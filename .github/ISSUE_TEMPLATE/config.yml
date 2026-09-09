@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Explore the live simulator
+    url: https://starbound.vnmoorthy.chatgpt.site
+    about: Try the controls and export a scenario before reporting a numerical issue.
+  - name: Read the model and its boundaries
+    url: https://github.com/vnmoorthy/starbound/blob/main/docs/PHYSICS.md
+    about: Separate an assumption change from an implementation error.

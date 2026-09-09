@@ -46,3 +46,6 @@ next-env.d.ts
 # Presentation finalizer temporary workbook snapshots
 /.chart-data-*/
 .gstack/
+
+# Microsoft Office lock files
+~$*
