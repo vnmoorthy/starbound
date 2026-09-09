@@ -2,7 +2,7 @@
 
 # StarBound
 
-### Build a star-powered future.
+### A star is the power source. Engineering is the challenge.
 
 A Dyson swarm laboratory with **Astra-directed experiments** and an independent physics engine.
 
@@ -23,6 +23,31 @@ A Dyson swarm laboratory with **Astra-directed experiments** and an independent 
 StarBound follows a hypothetical Mercury industrial seed through mining, refining, manufacturing, launch, solar collection and electricity delivery to Earth. Change the mission and the engine recalculates every result. Ask Astra for a policy, let the engine evaluate it, then inspect its revision.
 
 This is a working **reduced-order simulation and AI experiment testbed**. It is not a validated plan to build a Dyson sphere or a claim that Mercury electricity is economically viable.
+
+## Mission console
+
+| Operate | See the consequence |
+| :--- | :--- |
+| **Mercury robots** | Shut down excavation and watch the production chain lose its feedstock. |
+| **Manufacturing plant** | Change recovery, capacity and reinvestment; inspect the mass ledger. |
+| **Solar collectors** | Balance orbit, radiator area and launch requirements. |
+| **Earth receiver** | Change aperture, pointing and geometry; compare usable grid power. |
+| **Astra experiments** | Apply a recorded proposal and independently recompute its result. |
+
+**Live telemetry stays visible across every tab.** Earth delivery can plateau when the receiver is saturated; the console now explains that constraint. Increase the ground receiver diameter in **Earth power** to explore its effect. A blocked beam or thermal failure produces zero delivery.
+
+<details>
+<summary><strong>60-second mission walkthrough</strong></summary>
+
+1. Open Mission control and load **Sun blocks Earth transmission**: Earth delivery becomes zero.
+2. Restore **Baseline / finite imports**, then open **Earth power** and change the receiver diameter.
+3. Open **Robot control** and put the excavation fleet into safe mode.
+4. Restore the mission, open **Astra lab**, and apply a recorded policy.
+5. Export the scenario and inspect the same inputs in the numerical engine.
+
+[Full recording script](docs/ONE-MINUTE-DEMO.md) · [Presentation](deliverables/StarBound-Mission-Briefing.pptx) · [Submission copy](docs/SUBMISSION.md)
+
+</details>
 
 ## Explore the mission
 

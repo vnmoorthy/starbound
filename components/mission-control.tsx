@@ -348,6 +348,13 @@ export default function MissionControl() {
         <span>AN EXPERIMENT IN STAR-SCALE ENGINEERING</span>
         <span className="simulation-tag">ILLUSTRATIVE SIMULATION</span>
       </div>
+      <div className="live-telemetry" aria-live="polite" aria-atomic="true">
+        <span className="telemetry-status"><i /> LIVE MISSION TELEMETRY</span>
+        <span>YEAR <strong>{fmt(year, 1)}</strong></span>
+        <span>ORBITAL OUTPUT <strong>{formatSI(row.grossPowerW, 'W')}</strong></span>
+        <span className="earth-live">EARTH DELIVERY <strong>{formatSI(row.gridW, 'W')}</strong></span>
+        <span className="telemetry-reason">{!sim.thermalValid ? 'Thermal shutdown' : link.sunBlocked ? 'Sun blocks transmission' : link.curtailedBeamW > 0 ? 'Receiver-limited · enlarge ground receiver to deliver more' : 'Recalculates with every mission change'}</span>
+      </div>
       <Tabs
         value={tab}
         onValueChange={(v) => setTab(String(v))}
