@@ -351,7 +351,7 @@ export default function OrbitalScene({
         </Button>}
       </div>
       <div className="scene-scale">
-        {mode === 'concept' ? 'Interactive concept artwork · live calculations in telemetry above' : `${error ? 'Interactive projected view' : 'Drag to orbit · scroll to zoom'} · representative collectors · sizes enlarged`}
+        {mode === 'concept' ? 'Animated concept · illustrative orbital motion · live telemetry above' : `${error ? 'Interactive projected view' : 'Drag to orbit · scroll to zoom'} · representative collectors · sizes enlarged`}
       </div>
     </>
   );
