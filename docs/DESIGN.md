@@ -64,7 +64,7 @@ Real users and demand; Astra's comparative advantage on a broader benchmark; phy
 
 ## Reproducible release contract (review revision 1)
 
-The minimum release is the tested numerical engine, five-view interface and canonical demo below. Then run real inference, build the presentation, and publish the exact validated source. All user-requested deliverables remain release work; this ordering is not permission to omit them. A logged inference failure is honest evidence of a blocker, not a successful Astra experiment. Missing Sol access does not block the simulator, but blocks any comparative superiority claim.
+The minimum release is the tested numerical engine, mission interface (now expanded to nine tabs) and canonical demo below. Then run real inference, build the presentation, and publish the exact validated source. All user-requested deliverables remain release work; this ordering is not permission to omit them. A logged inference failure is honest evidence of a blocker, not a successful Astra experiment. Missing Sol access does not block the simulator, but blocks any comparative superiority claim.
 
 ### Canonical demo fixture
 
@@ -96,7 +96,7 @@ The ordinary-search reference uses a declared 1,008-point coarse grid and is exp
 
 ### Runtime and availability
 
-Mission validation enforces every numeric bound, including 1–100 years (12–1,200 steps), finite values and the known link-mode enum. Target: a single simulation under 100 ms on the development laptop; measure it and report the reference environment rather than treating that as a universal guarantee. Rendering samples at most 1,600 collectors at up to 30 frames/s and respects reduced-motion preference.
+Mission validation enforces every numeric bound, including 1–100 years (12–1,200 steps), finite values and the known link-mode enum. Target: a single simulation under 100 ms on the development laptop; measure it and report the reference environment rather than treating that as a universal guarantee. The Three.js renderer samples at most 2,400 representative collectors at up to 30 frames/s and respects reduced-motion preference.
 
 The local adapter binds only to 127.0.0.1, uses a per-process random token, allows only the two local development origins, rejects oversized requests, and allows one model run at a time. Model inference occurs in a read-only sandbox with structured output and fixed command arguments. Test invalid input, missing authorization and the full real model path. The static public replay remains readable without model access, with status and provenance plainly visible.
 

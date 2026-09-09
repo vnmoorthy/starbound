@@ -1,6 +1,6 @@
 # StarBound numerical model
 
-Model version: **1.0.0**. Implementation: [`lib/simulation/engine.ts`](../lib/simulation/engine.ts). All scenario results are conditional on the explicit assumptions below. This is a reduced-order engineering model, not a validated construction design or a research-grade orbital simulation.
+Current monthly model: **1.1.0**; recorded model comparisons retain **1.0.0**. Implementation: [`lib/simulation/engine.ts`](../lib/simulation/engine.ts). All scenario results are conditional on the explicit assumptions below. This is a reduced-order engineering model, not a validated construction design or a research-grade orbital simulation.
 
 ## 1. System boundary
 
@@ -116,7 +116,7 @@ modeled launch energy = (GM/R)/0.5 + 25 MJ/kg ≈ 43.1 MJ/kg
 
 Escape is not a complete mission. A collector must acquire the appropriate heliocentric trajectory, avoid Mercury and other objects, unfold, orient and maintain its orbit. The fixed transfer allowance is a placeholder for that engineering, not a trajectory solution. Accelerator length under constant acceleration a would be v²/(2a); allowable payload acceleration and site constraints must be established before choosing a launcher. [JPL parameters](https://ssd.jpl.nasa.gov/planets/phys_par.html)
 
-The visualization projects a representative sample of inclined circular Kepler orbits. Orbital angular rates scale as r^(-3/2), while body sizes are enlarged for readability. These are not integrated ephemerides, collision-avoidance solutions or actual collector counts. Manufacturing and link calculations use aggregate state, not animated particle positions.
+The Three.js visualization projects representative inclined circular Kepler orbits; its angular rates scale as r^(-3/2). The no-WebGL canvas is an illustrative interactive projection with accelerated display motion, not a Kepler-rate integrator. Body sizes are enlarged for readability. These are not integrated ephemerides, collision-avoidance solutions or actual collector counts. Manufacturing and link calculations use aggregate state, not animated particle positions.
 
 ## 6. Earth transmission
 
